@@ -25,7 +25,6 @@ export function rating() {
     btn.addEventListener("click", () => {
       rating = starValue;
       updateStars(rating);
-      console.log("Rating:", rating);
     });
 
     btn.addEventListener("mouseenter", () => {
