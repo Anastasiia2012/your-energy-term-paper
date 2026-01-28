@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=https://github.com/Anastasiia2012/your-energy-term-paper",
+    "build": "vite build --base=/Anastasiia2012/your-energy-term-paper/",
     "preview": "vite preview"
   },
   "devDependencies": {
