@@ -1,7 +1,6 @@
 import {renderPagination} from '../renderer/pagination.js';
 
 export function renderMuscles(data) {
-  console.log(data);
   const muscles = document.getElementById('renderer');
   const markup = data.results
     .map(({ name, imgURL }) => {

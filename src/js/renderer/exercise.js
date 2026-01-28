@@ -3,7 +3,6 @@ import {render} from '../renderer/dialog.js';
 
 export function renderExercise(data) {
   const exercises = document.getElementById('renderer');
-console.log(data);
   const markup = data.results
     .map(({ bodyPart, burnedCalories, name, rating, target, time, _id }) => {
       return `

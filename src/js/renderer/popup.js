@@ -100,10 +100,8 @@ rating();
   const submitForm = document.getElementById('review-form');
   submitForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(e.target);
 
     const rating = document.getElementById("rating-amount").innerText
-    //PATCH <https://your-energy.b.goit.study/api/exercises/{exerciseID}/rating>
     fetch(`https://your-energy.b.goit.study/api/exercises/${id}/rating`, {
       method: 'PATCH',
       headers: {
@@ -117,15 +115,10 @@ rating();
       }),
     })
       .then(response => response.json())
-      .then(data => {
-        console.log('Success132:', data);
-
-
-      })
+      .then(data => {})
       .catch(error => {
         console.error('Error:', error);
       });
-    console.log('submit');
     closePopup.click();
   });
 }

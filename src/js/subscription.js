@@ -16,11 +16,9 @@ form.addEventListener('submit', async function(event) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('Success132:', data);
       message.innerHTML = data.message
         message.classList.remove('opacity-0');
         message.classList.add('opacity-100');
-
     })
     .catch(error => {
       console.error('Error:', error);

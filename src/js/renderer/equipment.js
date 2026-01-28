@@ -1,7 +1,6 @@
 import {renderPagination} from '../renderer/pagination.js';
 
 export function renderEquipment(data) {
-  console.log(data);
   const equipment = document.getElementById('renderer');
   const markup = data.results
     .map(({ name, imgURL }) => {

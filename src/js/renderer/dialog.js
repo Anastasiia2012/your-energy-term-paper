@@ -4,17 +4,11 @@ import { renderExercise } from './exercise.js';
 
 export function render (id = '') {
 
-  console.log(id);
-
   fetchData(`https://your-energy.b.goit.study/api/exercises/${id}`, null, false)
     .then((exercise) => renderDialog(exercise))
     .catch((error) => console.log(error));
 
   function renderDialog(data) {
-    console.log(data);
-    console.log(data.rating)
-
-
     const markup = `
 <div data-state="open"
      class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
