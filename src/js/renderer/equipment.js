@@ -3,6 +3,7 @@ import {renderPagination} from '../renderer/pagination.js';
 export function renderEquipment(data) {
   const equipment = document.getElementById('renderer');
   const markup = data.results
+
     .map(({ name, imgURL }) => {
       return `
         <div class="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group" style="background-image: url(&quot;${imgURL}&quot;); background-size: cover; background-position: center center;">

@@ -3,6 +3,7 @@ import {init} from '../pagination.js';
 export function renderPagination(totalPages, filter) {
   const pagination = document.getElementById('pagination');
   let markup = '';
+  totalPages = totalPages > 5 ? 5 : totalPages;
   for (let i = 1; i <= totalPages; i++) {
     markup += `
     <button

@@ -6,8 +6,8 @@ import {renderExercise } from './renderer/exercise.js';
 export default class Exercises {
   constructor(params = []) {}
 
-  execute() {
-    fetchData(API_URL, null, false)
+  execute(filter = '') {
+    fetchData(filter ? API_URL : API_URL + filter, null, false)
       .then((exercises) => renderExercise(exercises))
       .catch((error) => console.log(error));
   }
