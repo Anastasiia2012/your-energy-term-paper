@@ -27,9 +27,17 @@
         <p class="text-muted-foreground text-base md:text-lg max-w-md mt-4">Transform your physique and embrace a
           healthier lifestyle with our comprehensive fitness and nutrition support.</p></div>
       <div class="flex flex-col items-end gap-4">
-        <div class="w-40 h-32 md:w-48 md:h-40 rounded-xl overflow-hidden bg-muted"><img
-          src="./img/top.png" alt="Fitness"
-          class="w-full h-full object-cover"></div>
+        <div class="w-40 h-32 md:w-48 md:h-40 rounded-xl overflow-hidden bg-muted">
+          <picture>
+            <source
+              srcset="./img/webp/top.webp 1x, ./img/webp/top@2x.webp 2x"
+              type="image/webp"
+            />
+            <img src="./img/top.png"
+                 srcset="./img/webp/top.webp 1x, ./img/webp/top@2x.webp 2x"
+                 alt="Fitness" class="w-full h-full object-cover"/>
+          </picture>
+        </div>
         <div class="flex flex-wrap gap-2 justify-end max-w-48"><span
           class="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors cursor-pointer">#Sport</span><span
           class="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors cursor-pointer">#Healthy</span><span
@@ -38,9 +46,17 @@
         </div>
       </div>
     </div>
-    <div class="w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden bg-muted"><img
-      src="./img/line.png"
-      alt="Two women exercising together" class="w-full h-full object-cover"></div>
+    <div class="w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden bg-muted">
+      <picture>
+        <source
+          srcset="./img/webp/line.webp 1x, ./img/webp/line@2x.webp 2x"
+          type="image/webp"
+        />
+        <img src="./img/line.png"
+             srcset="./img/webp/line.webp 1x, ./img/webp/line@2x.webp 2x"
+             alt="Two women exercising together" class="w-full h-full object-cover"/>
+      </picture>
+    </div>
   </section>
   <section class="py-10 md:py-16">
     <div class="container mx-auto px-5 md:px-6">
