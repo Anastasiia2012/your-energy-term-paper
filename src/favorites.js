@@ -5,7 +5,7 @@ const favorites = getFavorites();
 
 if (favorites.length !== 0) {
   renderExercise({
-    results: favorites,
+    results: favorites
   });
 }
 
