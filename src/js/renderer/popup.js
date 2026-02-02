@@ -4,7 +4,7 @@ export function renderPopup (id = string) {
 const markup = `
 <div data-state="open"
      class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
-     style="pointer-events: auto;" data-aria-hidden="true" aria-hidden="true"></div>
+     style="pointer-events: auto;" data-aria-hidden="true" aria-hidden="true" id="popup-background"></div>
 
 <div role="dialog" id="radix-:r3:" aria-describedby="radix-:r5:" aria-labelledby="radix-:r4:" data-state="open"
      class="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-w-md p-0 overflow-hidden bg-[#242424] border-none rounded-2xl"
@@ -88,13 +88,20 @@ const markup = `
 </div>
 `;
 
+const closeDialog = document.getElementById('close-dialog');
+closeDialog.click();
 document.getElementById('popup').innerHTML = markup;
 rating();
 
   const closePopup = document.getElementById('close-popup');
+  const popupBackground = document.getElementById('popup-background');
+  closePopup.addEventListener('click', closePopupFunction);
+  popupBackground.addEventListener('click', closePopupFunction);
 
-  closePopup.addEventListener('click', () => {
-    document.getElementById('popup').innerHTML = '';
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePopupFunction();
+    }
   });
 
   const submitForm = document.getElementById('review-form');
@@ -121,4 +128,8 @@ rating();
       });
     closePopup.click();
   });
+
+  function closePopupFunction() {
+    document.getElementById('popup').innerHTML = '';
+  }
 }

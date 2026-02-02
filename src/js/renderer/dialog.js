@@ -1,6 +1,7 @@
 import {renderPopup} from '../renderer/popup.js';
 import {fetchData } from '../fetchApi.js';
 import { renderExercise } from './exercise.js';
+import { addToFavorites} from '../storage/favorites.js';
 
 export function render (id = '') {
 
@@ -12,10 +13,10 @@ export function render (id = '') {
     const markup = `
 <div data-state="open"
      class="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
-     style="pointer-events: auto;" data-aria-hidden="true" aria-hidden="true"></div>
+     style="pointer-events: auto;" data-aria-hidden="true" aria-hidden="true" id="dialog-background"></div>
 
 <div role="dialog" id="radix-:r0:" aria-describedby="radix-:r2:" aria-labelledby="radix-:r1:" data-state="open"
-     class="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-w-[708px] p-6 overflow-hidden bg-[#1f1f1f] border-border rounded-2xl"
+     class="fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg max-w-[708px] p-6 overflow-hidden bg-[#1f1f1f] border-border rounded-2xl"
      tabindex="-1" style="pointer-events: auto;">
   <button
     class="absolute right-4 top-4 z-10 w-8 h-8 flex items-center justify-center hover:opacity-70 transition-opacity" id="close-dialog">
@@ -81,11 +82,13 @@ export function render (id = '') {
       </div>
       <div class="mb-3"><span class="text-xs text-[#6c6c6c] block">Burned calories</span><span
         class="text-sm font-medium text-white">${data.burnedCalories}/${data.time} min</span></div>
-      <div class="border-t border-[#4f4f4f] mb-3"></div>
+      <div class="border-t border-[#4f4f4f] mb-3 text-sm font-medium text-white">${data.description}</div>
     </div>
   </div>
   <div class="flex gap-4 mt-6 justify-end">
     <button
+    id="add-to-favorites"
+    data-exercise='${JSON.stringify(data)}'
       class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 bg-white text-black hover:bg-white/90 rounded-full px-8 py-6 text-base font-normal">
       Add to favorites
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -97,7 +100,7 @@ export function render (id = '') {
     </button>
     <button
       id="give-rating"
-      class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background h-10 border-white/40 text-white hover:bg-white/10 hover:text-white rounded-full px-8 py-6 text-base font-normal">
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 bg-white text-black hover:bg-white/90 rounded-full px-8 py-6 text-base font-normal">
       Give a rating
     </button>
   </div>
@@ -115,8 +118,15 @@ export function render (id = '') {
     document.getElementById('dialog').innerHTML = markup;
 
     const closeDialog = document.getElementById('close-dialog');
-    closeDialog.addEventListener('click', () => {
-      document.getElementById('dialog').innerHTML = '';
+    const dialogBackdrop = document.getElementById('dialog-background');
+
+    closeDialog.addEventListener('click', closeDialogFunction);
+    dialogBackdrop.addEventListener('click', closeDialogFunction);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeDialogFunction();
+      }
     });
 
     const giveRating = document.getElementById('give-rating');
@@ -124,5 +134,15 @@ export function render (id = '') {
       renderPopup(id);
     });
 
+
+    function closeDialogFunction() {
+      document.getElementById('dialog').innerHTML = '';
+    }
+
+    const addToFavoritesButton = document.getElementById('add-to-favorites');
+    addToFavoritesButton.addEventListener('click', (e) => {
+      addToFavorites(e.target.getAttribute('data-exercise'));
+      closeDialogFunction();
+    });
   }
 }
