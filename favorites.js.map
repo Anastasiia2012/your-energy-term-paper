@@ -1,1 +1,1 @@
-{"version":3,"file":"favorites.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"favorites.js","sources":["../src/favorites.js"],"sourcesContent":["import { getFavorites } from './js/storage/favorites.js';\nimport { renderExercise } from './js/renderer/exercise.js';\n\nconst favorites = getFavorites();\n\nif (favorites.length !== 0) {\n  renderExercise({\n    results: favorites,\n  });\n}\n\n\n\n\n"],"names":["favorites","getFavorites","renderExercise"],"mappings":"sDAGA,MAAMA,EAAYC,EAAY,EAE1BD,EAAU,SAAW,GACvBE,EAAe,CACb,QAASF,CACb,CAAG"}
