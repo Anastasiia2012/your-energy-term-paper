@@ -37,6 +37,8 @@ export function renderExercise(data) {
 
   renderPagination(data.totalPages, 'Exercise');
 
+  document.getElementById('breadcrumbs').classList.add('opacity-1');
+  document.getElementById('search-box').classList.add('opacity-1');
 
   exercises.querySelectorAll('.start-dialog').forEach(el => {
       el.addEventListener('click', () => {
