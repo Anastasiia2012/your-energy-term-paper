@@ -1,26 +1,42 @@
-const form = document.getElementById('subscription-form');
-const message = document.getElementById('subscription-message');
+import { postSubscription } from './api.js';
 
-form.addEventListener('submit', async function(event) {
-  event.preventDefault();
+export function initSubscription() {
+  const form = document.querySelector('.footer-form');
+  if (!form) return;
 
-  const email = event.target.email.value;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const input = form.querySelector('.footer-input');
+    const email = input.value.trim();
+    if (!email) return;
 
-  fetch('https://your-energy.b.goit.study/api/subscription', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify({ email }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      message.innerHTML = data.message
-        message.classList.remove('opacity-0');
-        message.classList.add('opacity-100');
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-});
+    const emailPattern =
+      /^\w+(\.\w+)?@[a-zA-Z_]+(\.[a-zA-Z_]+)*\.[a-zA-Z]{2,3}$/;
+
+    let msgEl = form.querySelector('.footer-form-message');
+    if (!msgEl) {
+      msgEl = document.createElement('p');
+      msgEl.classList.add('footer-form-message');
+      form.appendChild(msgEl);
+    }
+
+    if (!emailPattern.test(email)) {
+      msgEl.textContent = 'Please enter a valid email address.';
+      msgEl.className = 'footer-form-message footer-form-message--error';
+      msgEl.hidden = false;
+      return;
+    }
+    try {
+      const data = await postSubscription(email);
+      msgEl.textContent = data.message || 'Subscription successful!';
+      msgEl.className = 'footer-form-message footer-form-message--success';
+      msgEl.hidden = false;
+      input.value = '';
+    } catch (err) {
+      msgEl.textContent =
+        err.message || 'Subscription failed. Please try again.';
+      msgEl.className = 'footer-form-message footer-form-message--error';
+      msgEl.hidden = false;
+    }
+  });
+}

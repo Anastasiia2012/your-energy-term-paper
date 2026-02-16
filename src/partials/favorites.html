@@ -1,76 +1,97 @@
-<main class="flex-1">
-  <section class="px-6 py-8 md:px-16 lg:px-24">
-    <div class="flex flex-col lg:flex-row justify-between gap-8 mb-8">
-      <div class="flex-1">
-        <div class="flex items-start gap-4 mb-2">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="flex-shrink-0 mt-2">
-            <circle cx="24" cy="24" r="4" fill="currentColor"></circle>
-            <line x1="24" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="41.32050807568878" y2="34" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="34" y2="41.32050807568877" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="24" y2="44" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="14.000000000000004" y2="41.32050807568878" stroke="currentColor"
-                  stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="6.679491924311225" y2="34" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="4" y2="24.000000000000004" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="6.679491924311229" y2="13.999999999999998" stroke="currentColor"
-                  stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="13.999999999999991" y2="6.6794919243112325" stroke="currentColor"
-                  stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="23.999999999999996" y2="4" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="34" y2="6.679491924311229" stroke="currentColor" stroke-width="1.5"></line>
-            <line x1="24" y1="24" x2="41.320508075688764" y2="13.999999999999991" stroke="currentColor"
-                  stroke-width="1.5"></line>
-          </svg>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-foreground">Get <em
-            class="font-serif italic">Body</em> in<br>shape, Stay healthy</h1></div>
-        <p class="text-muted-foreground text-base md:text-lg max-w-md mt-4">Transform your physique and embrace a
-          healthier lifestyle with our comprehensive fitness and nutrition support.</p></div>
-      <div class="flex flex-col items-end gap-4">
-        <div class="w-40 h-32 md:w-48 md:h-40 rounded-xl overflow-hidden bg-muted">
-          <picture>
-            <source
-              srcset="./img/webp/top.webp 1x, ./img/webp/top@2x.webp 2x"
-              type="image/webp"
-            />
-            <img src="./img/top.png"
-                 srcset="./img/webp/top.webp 1x, ./img/webp/top@2x.webp 2x"
-                 alt="Fitness" class="w-full h-full object-cover"/>
-          </picture>
+<main>
+  <section class="favorites">
+    <div class="container">
+      <h1 class="favorites-title">Favorites</h1>
+
+      <div class="favorites-body">
+        <div class="favorites-sidebar">
+          <div class="quote-card">
+            <div class="quote-card-header">
+              <div class="quote-card-icon">
+                <img
+                  src="./images/icons/ellipse-light.svg"
+                  alt=""
+                  width="32"
+                  height="32"
+                  class="quote-card-icon-bg"
+                  loading="lazy"
+                />
+                <img
+                  src="./images/icons/running-man.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                  class="quote-card-icon-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="quote-card-text">
+                <h3 class="quote-card-title">Quote of the day</h3>
+                <p class="quote-card-quote">
+                  A lot of times I find that people who are blessed with the
+                  most talent don't ever develop that attitude, and the ones
+                  who aren't blessed in that way are the most competitive
+                  and have the biggest heart.
+                </p>
+              </div>
+              <img
+                class="quote-card-commas"
+                src="./images/icons/inverted-commas.svg"
+                alt=""
+                width="24"
+                height="24"
+                loading="lazy"
+              />
+            </div>
+            <p class="quote-card-author">Tom Brady</p>
+          </div>
+
+          <div class="favorites-sidebar-bottom">
+            <div class="daily-norm-card daily-norm-card--compact">
+              <div class="daily-norm-icon">
+                <img
+                  src="./images/icons/food-icon.svg"
+                  alt=""
+                  width="32"
+                  height="32"
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="daily-norm-title">110 min</h3>
+              <p class="daily-norm-subtitle">Daily norm of sports</p>
+            </div>
+            <div class="sidebar-image sidebar-image--favorites">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                        ./images/photos/sports-break.webp    1x,
+                        ./images/photos/sports-break@2x.webp 2x
+                      "
+                />
+                <source
+                  type="image/png"
+                  srcset="
+                        ./images/photos/sports-break.png    1x,
+                        ./images/photos/sports-break@2x.png 2x
+                      "
+                />
+                <img
+                  src="./images/photos/sports-break.png"
+                  alt="Women taking a break from workout"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+          </div>
         </div>
-        <div class="flex flex-wrap gap-2 justify-end max-w-48"><span
-          class="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors cursor-pointer">#Sport</span><span
-          class="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors cursor-pointer">#Healthy</span><span
-          class="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors cursor-pointer">#Workout</span><span
-          class="px-4 py-2 border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors cursor-pointer">#Diet</span>
+
+        <div class="favorites-content">
+          <ul class="favorites-list"></ul>
+
+          <div class="pagination"></div>
         </div>
       </div>
-    </div>
-    <div class="w-full h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden bg-muted">
-      <picture>
-        <source
-          srcset="./img/webp/line.webp 1x, ./img/webp/line@2x.webp 2x"
-          type="image/webp"
-        />
-        <img src="./img/line.png"
-             srcset="./img/webp/line.webp 1x, ./img/webp/line@2x.webp 2x"
-             alt="Two women exercising together" class="w-full h-full object-cover"/>
-      </picture>
     </div>
   </section>
-  <section class="py-10 md:py-16">
-    <div class="container mx-auto px-5 md:px-6">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"><h2
-        class="text-3xl md:text-4xl font-semibold text-foreground">Exercises / <span
-        class="text-muted-foreground">Waist</span></h2>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-5">
-        <load src="/./partials/quotes.html" />
-        <div class="lg:col-span-3 flex flex-col gap-5">
-          <div id="renderer" class="flex-1 flex items-center justify-center"><p class="text-center text-muted-foreground text-base leading-relaxed max-w-md">It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</p></div>
-      </div>
-    </div>
-  </section>
-  <load src="/./partials/dialog.html" />
-  <load src="/./partials/popup.html" />
 </main>
